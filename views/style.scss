@@ -1,0 +1,368 @@
+@import "turbosass";
+
+$fontpath: "/fonts";
+@include webfont("MuseoSans","museosans_500");
+
+@include sticky-footer(32px,"#root","#rootfooter","footer");
+@include selectioncolor(#95abc3);
+
+@mixin iphonecheckbox($width:44px,$height:18px) {
+	display: inline-block;
+	width: $width;
+	position: absolute;
+	height: $height;
+	cursor: pointer;
+	top: 126px;
+	left: 35px;
+
+	.check {
+		display: block;
+		width: 22px;
+		height: 20px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		@include transition(left .25s ease-out);
+		background: url('/images/sprites-opti.png') no-repeat 0px -45px;
+	}
+
+	input[type=checkbox] {
+		display: none;
+
+		&:checked + .check {
+			top: 0px;
+			left: ($width / 2 ) - 2;
+		}
+
+		& + .check {
+			top: 0px;
+			left: 0px;
+		}
+	}
+}
+
+#waveformcheck {
+	@include iphonecheckbox;
+}
+
+.ui-dial {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	background: url('/images/dial.png');
+	cursor: pointer;
+}
+
+html {
+	//overflow: hidden;
+	//background: -webkit-gradient(radial, 50% 10%, 0, 50% 50%, 500, from(rgba(80,80,80,0.4)), to(rgba(40,40,40,0.4))) no-repeat, url('/images/bgnoise-opti.png');
+	//background: -moz-radial-gradient(50% 10%, rgba(80,80,80,0.4), rgba(40,40,40,0.4)) no-repeat, url('/images/bgnoise-opti.png');
+	background: url('http://isitruby19.com/images/bg/wrapper_bg.png') no-repeat 50% -209px #163457;
+}
+
+body {
+	color: rgba(255,255,255,0.9);
+	color: #95abc3;
+	color: #fff;
+	font: 16px/20px Arial;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+}
+
+// text styles
+
+h2 {
+	font: bold 20px/40px Helvetica Neue, Arial, sans-serif;
+	font: 35px/40px MuseoSans;
+}
+
+h3 {
+	font: bold 16px/40px Helvetica Neue, Arial, sans-serif;
+	font: 22px/60px MuseoSans;
+}
+
+p {
+	text-align: justify;
+
+	& + p {
+		margin-top: 20px;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: #9dd73f;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+ul {
+	& + p {
+		margin-top: 20px;
+	}
+}
+
+#permalink {
+	@include border-radius(10px);
+	display: none;
+	background: rgba(0,0,0,0.2);
+	padding: 10px;
+	margin-bottom: 20px;
+
+	.url {
+		text-align: center;
+		font: 28px/40px MuseoSans;
+	}
+
+	.notice {
+		font-size: 12px;
+		text-align: center;
+		color: #aaa;
+	}
+}
+
+#createpermalink {
+	margin-bottom: 20px;
+}
+
+// controls
+
+#tempo, #threshold, #shape {
+	position: absolute;
+	top: 57px;
+}
+
+#tempo     { left: 112px; }
+#threshold { left: 172px; }
+#shape     { left: 232px; }
+
+#tuning, #cutoff, #resonance, #envmod, #decay, #accent {
+	position: absolute;
+	top: 117px;
+}
+
+#tuning    { left: 112px; }
+#cutoff    { left: 172px; }
+#resonance { left: 232px; }
+#envmod    { left: 292px; }
+#decay     { left: 352px; }
+#accent    { left: 412px; }
+
+.led {
+	position:absolute;
+	width: 30px;
+	height: 30px;
+	background: url('/images/sprites-opti.png') no-repeat -100px -45px;
+
+	&.on {
+		background-position: -50px -45px;
+	}
+}
+
+button {
+	border: 0;
+	position: absolute;
+	background: url('/images/sprites-opti.png') no-repeat;
+	
+	&.tall {
+		background-position: -150px -45px;
+		width: 19px;
+		height: 35px;
+		
+		&:active {
+			background-position: -200px -45px;
+		}
+	}
+
+	&.flat {
+		background-position: -250px -45px;
+		width: 35px;
+		height: 19px;
+		
+		&:active {
+			background-position: -300px -45px;
+		}
+	}
+	
+	&.square {
+		width: 35px;
+		height: 35px;
+		background-position: -350px -45px;
+		
+		&:active {
+			background-position: -400px -45px;
+		}
+	}
+
+	&::-moz-focus-inner {
+		border: 0;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+#stepnumber {
+	position: absolute;
+	width: 50px;
+	height: 43px;
+	top: 34px;
+	left: 397px;
+	background: url('/images/sprites-opti.png') no-repeat 0px 0px;
+}
+
+#downled, #upled, #accentled, #slideled, #cled, #dled, #eled, #fled, #gled, #aled, #bled, #ccled {
+	top: 254px;
+}
+
+#cled            { left:  50px; }
+#dled            { left:  80px; }
+#eled            { left: 110px; }
+#fled            { left: 140px; }
+#gled            { left: 170px; }
+#aled            { left: 200px; }
+#bled            { left: 230px; }
+#ccled           { left: 260px; }
+#downled         { left: 290px; }
+#upled           { left: 320px; }
+#accentled       { left: 350px; }
+#slideled        { left: 380px; }
+
+#pitchmodeled, #noteled, #restled {
+	top: 212px;
+}
+
+#pitchmodeled    { left:  10px; }
+#noteled         { left: 305px; }
+#restled         { left: 335px; }
+
+#dbled, #ebled, #gbled, #abled, #bbled {
+	top: 193px;
+}
+
+#dbled           { left:  65px; }
+#ebled           { left:  95px; }
+#gbled           { left: 155px; }
+#abled           { left: 185px; }
+#bbled           { left: 215px; }
+
+#dbbutton, #ebbutton, #gbbutton, #abbutton, #bbbutton {
+	top: 218px;
+}
+
+#dbbutton        { left:  71px; }
+#ebbutton        { left: 101px; }
+#gbbutton        { left: 161px; }
+#abbutton        { left: 191px; }
+#bbbutton        { left: 221px; }
+
+#downbutton, #upbutton, #accentbutton, #slidebutton, #cbutton, #dbutton, #ebutton, #fbutton, #gbutton, #abutton, #bbutton, #ccbutton {
+	top: 279px;
+}
+
+#cbutton         { left:  56px; }
+#dbutton         { left:  86px; }
+#ebutton         { left: 116px; }
+#fbutton         { left: 146px; }
+#gbutton         { left: 176px; }
+#abutton         { left: 206px; }
+#bbutton         { left: 236px; }
+#ccbutton        { left: 266px; }
+#downbutton      { left: 296px; }
+#upbutton        { left: 326px; }
+#accentbutton    { left: 356px; }
+#slidebutton     { left: 386px; }
+
+#gatebutton      { left: 367px; top: 210px; }
+#pitchmodebutton { left:   9px; top: 238px; }
+#clearbutton     { left:   9px; top: 289px; }
+#backbutton      { left: 418px; top: 210px; }
+#stepbutton      { left: 418px; top: 279px; }
+
+header {
+	width: 400px;
+	margin: 0 auto;
+
+	h1 {
+		font: 32px/64px OrbitronBold;
+		color: #c63929;
+		text-align: center;
+		text-shadow: 0px 5px 20px rgba(0,0,0,0.4);
+	}
+}
+
+#main {
+	@include c12;
+	@include clearfix;
+	background: url('/images/panel-opti.png') no-repeat 410px 40px;
+}
+
+#console {
+	@include g6;
+	margin-top: 40px;
+	height: 340px;
+	position: relative;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+#about, #intro {
+	@include g6;
+}
+
+#intro {
+	padding-top: 20px;
+	
+	p {
+		margin-right: 40px;
+	}
+}
+
+#about {
+	//padding-top: 20px;
+}
+
+#links {
+	@include g6;
+	@include p3;
+	@include s3;
+	list-style: none;
+
+	li {
+		@include g2;
+		text-align: center;
+
+		&:first-child {
+			@include alpha;
+		}
+
+		&:last-child {
+			@include omega;
+		}
+
+		a {
+			@include transition(all .2s ease);
+			color: #47f;
+			text-decoration: none;
+
+			&:hover {
+			}
+		}
+	}
+}
+
+footer {
+	@include c12;
+	@include border-radius-top(10px);
+//	@include box-shadow(0px 0px 30px rgba(0,0,0,0.4));
+	background: rgba(0,0,0,0.1);
+
+	p {
+		@include g12;
+		font-size: 12px;
+		line-height: 32px;
+	}
+}

@@ -1,0 +1,154 @@
+//= require bootstrap/dist/css/bootstrap.min
+//= require bootstrap/dist/css/bootstrap-theme.min
+
+/*@import url(http://fonts.googleapis.com/css?family=Abel);*/
+
+$red: #fc3932;
+$darkred: #cc2b1f;
+$grey: #ccc;
+$darkgrey: #aaa;
+
+$cellWidth: 30px;
+$cellHeight: 30px;
+
+body {
+    font-family: Abel, sans-serif;
+}
+
+.button, .toggle-button {
+    outline: none;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    padding: 0;
+    vertical-align: top;
+}
+
+.knob {
+    display: inline-block;
+    padding: 10px;
+    /*background: blue;*/
+
+    p {
+        text-align: center;
+        margin-top: -5px;
+    }
+}
+
+.waveform {
+    width: 120px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+.toggle-button {
+    background-color: $grey;
+    width: $cellWidth;
+    height: $cellHeight;
+    margin-bottom: 2px;
+
+    &.on {
+        background-color: $red;
+    }
+}
+
+.waveform-button {
+    padding: 10px;
+}
+
+.pitch-label {
+    background-color: #e6e6e6;
+    height: $cellHeight;
+    margin-bottom: 2px;
+    line-height: $cellHeight;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.step-label {
+    background-color: #f2f2f2;
+    margin-bottom: 2px;
+    line-height: $cellHeight;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.column {
+    padding-left: 12px;
+    padding-top: 10px;
+    display: inline-block;
+    width: 270px;
+
+    .button {
+        width: 126px;
+        height: 62px;
+        padding: 10px 20px;
+        margin-bottom: 2px;
+    }
+
+    .button + .button {
+        margin-left: 2px;
+    }
+
+    .pattern-button {
+        width: $cellWidth;
+        height: $cellHeight;
+        padding: 0;
+    }
+
+    .pattern-button + .pattern-button {
+        margin-left: 2px;
+    }
+}
+
+.step-column {
+    width: $cellWidth;
+    box-sizing: content-box;
+    padding-left: 2px;
+    display: inline-block;
+    line-height: 0;
+    padding-top: 5px;
+    border-top: 5px solid transparent;
+
+    &.highlight {
+        .step-label {
+            background-color: #e6e6e6;
+        }
+
+        .button.grey {
+            background-color: #aaaaaa;
+        }
+    }
+}
+
+.playing {
+    border-top: 5px solid $red;
+}
+
+.grid {
+    display: inline-flex;
+    align-items: flex-start;
+}
+
+.pitch-button {
+    width: $cellWidth;
+    height: $cellHeight;
+    margin-bottom: 2px;
+}
+
+.button {
+    background-color: $red;
+
+    &:active {
+        background-color: $darkred;
+    }
+}
+
+.button.grey {
+    background-color: $grey;
+
+    &:active {
+        background-color: $darkgrey;
+    }
+}

@@ -1,0 +1,143 @@
+!!! html
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %title js303
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %link{:href => "/style.css", :rel => "stylesheet"}
+  %body
+    #root
+      %header
+        %h1 js303
+      #main
+        #intro
+          :markdown
+            ## A true 303... in JavaScript!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            
+            ### Smaller title
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            ### Smaller title
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. [Ut enim ad](#) minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            
+            ### Credits
+            JS-303 was created by [Emil Loer](http://emilloer.com) ([@thedjinn](http://twitter.com/thedjinn) on Twitter).
+            
+        #console
+          %button#run.flat Run
+
+          #tempo
+          #threshold
+          #shape
+
+          #stepnumber
+
+          %label#waveformcheck{:for => "waveform"}
+            %input#waveform{:name => "waveform", :type => "checkbox"}
+            %span.check{:for => "waveform"}
+          #tuning
+          #cutoff
+          #resonance
+          #envmod
+          #decay
+          #accent
+
+          #pitchmodeled.led
+          %button#pitchmodebutton.flat{:title => "Enable pitch mode to advance the step counter after clicking on a note button"}
+          %button#clearbutton.flat{:title => "Reset the current step"}
+
+          #cled.led
+          %button#cbutton.tall
+          #dbled.led
+          %button#dbbutton.tall
+          #dled.led
+          %button#dbutton.tall
+          #ebled.led
+          %button#ebbutton.tall
+          #eled.led
+          %button#ebutton.tall
+          #fled.led
+          %button#fbutton.tall
+          #gbled.led
+          %button#gbbutton.tall
+          #gled.led
+          %button#gbutton.tall
+          #abled.led
+          %button#abbutton.tall
+          #aled.led
+          %button#abutton.tall
+          #bbled.led
+          %button#bbbutton.tall
+          #bled.led
+          %button#bbutton.tall
+          #ccled.led
+          %button#ccbutton.tall
+
+          #downled.led
+          %button#downbutton.tall{:title => "Play this step an octave lower"}
+          #upled.led
+          %button#upbutton.tall{:title => "Play this step an octave higher"}
+          #accentled.led
+          %button#accentbutton.tall{:title => "Play this step with accented cutoff and amplitude"}
+          #slideled.led
+          %button#slidebutton.tall{:title => "Slide the previous note to the pitch of this step"}
+
+          %button#stepbutton.square{:title => "Go to the next step"}
+          %button#backbutton.flat{:title => "Go to the previous step"}
+            
+          #noteled.led
+          #restled.led
+          %button#gatebutton.flat{:title => "Toggle whether this step is a note or a rest"}
+
+        #about
+          %h3 Share this groove with your friends
+          #createpermalink
+            You can
+            %a{:href => "#"} create a link to this song
+            to put on your favourite social networking site.
+          #permalink
+            .url http://js303.com/s/abcdef
+            .notice Any change to the knobs will not be reflected in the link.
+
+          %h3 Check out these grooves!
+          %ul
+            - @songs.each do |song|
+              %li #{song["id"]} - #{song["created_at"]}
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        %ul#links
+          %li
+            %a{:href => "#"}> link 1
+          %li
+            %a{:href => "#"}> link 2
+          %li
+            %a{:href => "#"}> link 3
+      #rootfooter
+
+    %footer
+      %p
+        CPU usage:
+        %span#load 100%
+
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"}
+    %script{:src => "//ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"}
+    - if production?
+      %script{:src => "/js/js303.min.js"}
+    - else
+      %script{:src => "/js/jquery.ui.dial.js"}
+      %script{:src => "/js/synth.js"}
+      %script{:src => "/js/js303.js"}
+
+    %script
+      - if @data
+        :plain
+          var song=#{@data};
+      :plain
+        var _gaq = [['_setAccount', 'UA-9782533-5'], ['_trackPageview']];
+        (function(d, t) {
+          var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+          g.async = true;
+          g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          s.parentNode.insertBefore(g, s);
+        })(document, 'script');

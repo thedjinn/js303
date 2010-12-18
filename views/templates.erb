@@ -1,0 +1,163 @@
+<script type="text/x-emblem" data-template-name="application">
+  .container
+    .row
+      .col-sm-12
+        h1 Welcome to JS303
+
+        .buttonrow
+          .knob
+            = view "knob" value=tempo min=60 max=240 step=1
+            p Tempo
+          .knob
+            = view "knob" value=cutoff
+            p Cutoff
+          .knob
+            = view "knob" value=resonance
+            p Resonance
+          .knob
+            = view "knob" value=envmod
+            p Env.mod
+          .knob
+            = view "knob" value=decay
+            p Decay
+          .knob
+            = view "knob" value=accent
+            p Accent
+
+        .buttonrow
+          .knob
+            = view "knob" value=distortion
+            p Distortion
+          .knob
+            = view "knob" value=foldback
+            p Foldback
+
+          .knob
+            = view "knob" value=delaySteps min=1 max=8 step=1
+            p Delay steps
+
+          .knob
+            = view "knob" value=delayMix
+            p Delay mix
+
+          .knob
+            = view "knob" value=delayFeedback
+            p Delay feedback
+
+          .waveform
+            p Waveform
+            = view "selectorButton" .waveform-button value=0 variable=waveform title="Saw"
+            = view "selectorButton" .waveform-button value=1 variable=waveform title="Square"
+
+        .grid
+          .step-column
+            each pitch in allowedPitches
+              .pitch-label= pitch
+
+            .pitch-label
+            .pitch-label G
+            .pitch-label S
+            .pitch-label A
+            .pitch-label U
+            .pitch-label D
+
+          each column in columns
+            .step-column class=column.highlight:highlight
+              each pitch in allowedPitches
+                = view "pitchButton" .pitch-button value=pitch variable=column.step.pitch
+
+              .step-label= column.index
+
+              = view "toggleButton" active=column.step.gate
+              = view "toggleButton" active=column.step.slide
+              = view "toggleButton" active=column.step.accent
+              = view "toggleButton" active=column.step.up
+              = view "toggleButton" active=column.step.down
+
+          .column
+            /.buttonrow
+                each pattern in patterns
+                  = view "selectorButton" .pattern-button value=pattern variable=currentPattern title=_view.contentIndex
+
+            .buttonrow
+              = view "button" action="randomize" target=currentPattern title="Randomize"
+              = view "button" action="clear" target=currentPattern title="Clear"
+            .buttonrow
+              = view "button" action="start" target=audioManager title="Start"
+              = view "button" action="stop" target=audioManager title="Stop"
+</script>
+
+<script type="text/x-handlebars" data-template-name="application-hb">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Welcome to JS303</h1>
+
+                <div class="alert alert-info">Work in progress</div>
+
+                <div class="grid">
+                    <div class="step-column">
+                        {{#each pitch in allowedPitches}}
+                            <div class="pitch-label">{{pitch}}</div>
+                        {{/each}}
+                    </div>
+
+                    {{#each column in columns}}
+                        <div class="step-column">
+                            {{#each pitch in allowedPitches}}
+                                {{view "pitchButton" class="pitch-button" value=pitch variable=column.step.pitch}}
+                            {{/each}}
+
+                            <div class="step-label">{{column.index}}</div>
+                        </div>
+                    {{/each}}
+
+                    <div class="column">
+                        <div class="buttonrow">{{#each pattern in patterns}}{{view "selectorButton" class="pattern-button" value=pattern variable=currentPattern title=_view.contentIndex}}{{/each}}</div>
+
+                        <div class="buttonrow">
+                            {{view "button" action="randomize" target=currentPattern title="Randomize"}}
+                            {{view "button" action="clear" target=currentPattern title="Clear"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        h1 Welcome to JS303
+
+        .alert.alert-info
+          | Work in progress
+
+        .grid
+          .step-column
+            each pitch in allowedPitches
+              .pitch-label= pitch
+
+          each column in columns
+            .step-column class=column.highlight:highlight
+              each pitch in allowedPitches
+                = view "pitchButton" .pitch-button value=pitch variable=column.step.pitch
+
+              .step-label= column.index
+
+          .column
+            .buttonrow
+                each pattern in patterns
+                  = view "selectorButton" .pattern-button value=pattern variable=currentPattern title=_view.contentIndex
+
+            .buttonrow
+              = view "button" action="randomize" target=currentPattern title="Randomize"
+              = view "button" action="clear" target=currentPattern title="Clear"
+            .buttonrow
+              = view "button" action="start" title="Start"
+              = view "button" action="stop" title="Stop"
+</script>
+
+<script type="text/x-emblem" data-template-name="toggle_button">
+= view.title
+</script>
+
+<script type="text/x-emblem" data-template-name="button">
+= view.title
+</script>

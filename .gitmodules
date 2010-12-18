@@ -1,0 +1,6 @@
+[submodule "vendor/turbosass"]
+	path = vendor/turbosass
+	url = git@github.com:thedjinn/turbosass.git
+[submodule "vendor/jquery-ui-dial"]
+	path = vendor/jquery-ui-dial
+	url = git://github.com/thedjinn/jquery-ui-dial.git
